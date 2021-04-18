@@ -2,7 +2,7 @@ Create a program that will get a college ID with 9 digits and will do the follow
 
 The first two digits represent the degree 
 The next two digits represent the department 
-The next two digits represent the year, and 
+The next two digits represent the year
 The remaining digits represent the order. 
 
 #include <stdio.h>
