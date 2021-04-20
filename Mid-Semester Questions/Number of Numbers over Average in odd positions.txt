@@ -1,0 +1,80 @@
+Find the number of numbers which are greater than the average of numbers in odd positions of the array
+
+//rbitri20
+#include <stdio.h>
+
+int getN()
+{
+    int n;
+    scanf("%d", &n);
+    return n;
+}
+
+void getArray(int n, int arr[])
+{
+    for(int i=0; i<n; i++)
+    {
+        arr[i]=getN();
+    }
+}
+//sum of numbers in odd positions of the array
+int Sum(int n, int arr[])
+{
+    int sum=0;
+    for(int i=0; i<n; i++)
+    {
+        if(i%2==0)
+        sum+=arr[i];
+    }
+    return sum;
+}
+//numbers in odd positions of the array
+int calculateOdds(int n, int arr[])
+{
+    int d=0;
+    for(int i=0; i<n; i++)
+    {
+        if(i%2==0)
+        d++;
+    }
+    return d;
+}
+
+double calcAvg(int d, int sum)
+{
+    double avg;
+    avg=(double)sum/d;
+    return avg;
+}
+
+int checkNumbers(int n, int arr[], double avg)
+{
+    int k=0;
+    for(int i=0; i<n; i++)
+    {
+        if(arr[i]>avg)
+            k++;
+    }
+
+    return k;
+}
+
+void showData(int k)
+{
+    printf("%d", k);
+}
+int main()
+{
+    int n, arr[100000];
+    int sum, k, d;
+    double avg;
+    n=getN();
+    getArray(n, arr);
+    sum=Sum(n, arr);
+    d=calculateOdds(n, arr);
+    avg=calcAvg(d, sum);
+    k=checkNumbers(n, arr, avg);
+
+    showData(k);
+    return 0;
+}
