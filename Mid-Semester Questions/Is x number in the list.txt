@@ -1,0 +1,52 @@
+Output Yes if a number from the array is equal to x, No otherwise. 
+
+//rbitri20
+#include <stdio.h>
+
+int getN()
+{
+    int n;
+    scanf("%d", &n);
+    return n;
+}
+
+void getArray(int n, int arr[])
+{
+    for(int i=0; i<n; i++)
+    {
+        arr[i]=getN();
+    }
+}
+
+int checkNumber(int n, int x, int arr[])
+{
+    for(int i=0; i<n; i++)
+    {
+        if(arr[i]==x)
+        {
+            showData1();
+            return 0;
+        }
+    }
+    showData2();
+}
+
+void showData1()
+{
+    printf("Yes");
+}
+
+void showData2()
+{
+    printf("No");
+}
+
+int main()
+{
+    int n, x, arr[100000];
+    n=getN();
+    x=getN();
+    getArray(n, arr);
+    checkNumber(n, x, arr);
+    return 0;
+}
