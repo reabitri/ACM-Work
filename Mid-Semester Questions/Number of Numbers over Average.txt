@@ -2,7 +2,6 @@ Find the number of numbers which are greater than their average
 
 //rbitri
 #include <stdio.h>
-#include <stdlib.h>
 
 int getN()
 {
@@ -54,7 +53,7 @@ void showData(int k)
 }
 int main()
 {
-    int n, arr[10000];
+    int n, arr[100000];
     int sum, k;
     double avg;
     n=getN();
