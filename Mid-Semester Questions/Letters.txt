@@ -1,0 +1,23 @@
+Number of lowercase and uppercase letters in a text
+
+//rbitri20
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+int main(){
+   char type[251];
+   gets(type);
+   int i, upper=0, lower=0;
+   while(type[i] != '\0')
+    {
+    if(isupper(type[i]))
+       upper++;
+    else if (islower(type[i]))
+    lower++;
+
+    i++;
+    }
+printf("%d %d", upper, lower);
+    return 0;
+}
