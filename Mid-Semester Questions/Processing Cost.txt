@@ -1,0 +1,46 @@
+We are given the series: 5 3 2 7, thus, the max of this series is 7. 
+Then, the processing cost of it is
+= (7-5) + (7-3) + (7-2) + (7-7)
+= 2 + 4 + 5 + 0 = 11.
+Find the minimum processing cost. 
+
+//rbitri20
+#include <stdio.h>
+
+int calc(int row, int col, int arr[])
+{
+    int max=-99999, sum=0;
+    for(int i; i<col; i++)
+    {
+        if(arr[i]>max)
+          max=arr[i];
+
+    }
+    for(int i=0; i<col; i++)
+    {
+        sum=sum+(max-arr[i]);
+    }
+    return sum;
+}
+
+ int main()
+ {
+     int row, col;
+     int arr[100000];
+     int max, min=99999;
+     scanf("%d%d", &row, &col);
+
+     for(int i=0; i<row; i++)
+     {
+         for(int j=0; j<col; j++)
+         {
+             scanf("%d", &arr[j]);
+         }
+        max=calc(row, col, arr);
+        if(max<min)
+            min=max;
+     }
+     printf("%d", min);
+
+     return 0;
+ }
