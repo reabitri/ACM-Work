@@ -1,0 +1,18 @@
+Number of digits of a number
+
+//rbitri
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int num, k=0;
+    scanf("%d", &num);
+    while(num != 0)
+    {
+        num = num/10;
+        k++;
+    }
+    printf("%d", k);
+    return 0;
+}
