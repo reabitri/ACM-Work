@@ -1,0 +1,61 @@
+Sort numbers
+//rbitri20
+//rbitri20
+#include <stdio.h>
+#include <stdlib.h>
+
+int getIntNum()
+{
+   int num;
+   scanf("%d", &num);
+
+   return num;
+}
+
+void getData(int n, int numbers[])
+{
+   for(int i=0; i<n; i++)
+   {
+       numbers[i]=getIntNum();
+   }
+}
+
+void showData(int numbers[], int n)
+{
+  for(int i=0; i<n; i++){
+    printf("%d ", numbers[i]);
+  }
+}
+
+void selSort(int arr[], int n)
+{
+  int i, j, temp;
+
+  for (i = 0; i<n - 1; i++)
+  {
+    int min = i;
+    for (j = i + 1; j < n; j++)
+    {
+      if (arr[j]<arr[min])
+        min = j;
+    }
+    temp = arr[min];
+    arr[min] = arr[i];
+    arr[i] = temp;
+  }
+}
+
+int main()
+{
+  int n, numbers[100];
+  n=getIntNum();
+  getData(n, numbers);
+  selSort(numbers, n);
+  showData(numbers, n);
+
+
+  return 0;
+}
+
+
+
