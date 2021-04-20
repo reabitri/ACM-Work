@@ -1,0 +1,42 @@
+Find the Missing number
+//rbitri20
+#include <stdio.h>
+#include <stdlib.h>
+
+void shownumbers(int n, int array[]){
+    printf("Values of array: ");
+    for(int i=0; i<n; i++){
+        scanf("%d", &array[i]);
+    }
+}
+void findMissing(int array[], int array2[], int n){
+    int cnt;
+    for(int i=0; i<n; ++i){
+            cnt=0;
+    for(int j=0; j<n; ++j){
+        if(array[i]==array2[j]){
+            cnt++;
+            break;
+       }
+    }
+        if(cnt==0){
+            printf("%d ", array[i]);
+        }
+    }
+}
+
+int main(void){
+    int n;
+    printf("How many numbers? ");
+    scanf("%d", &n);
+    int array[n], array2[n];
+    shownumbers(n, array);
+    shownumbers(n, array2);
+    printf("Missing number/s: ");
+    findMissing(array, array2, n);
+    return 0;
+ }
+
+
+
+
