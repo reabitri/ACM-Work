@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int getNum()
+{
+    int n;
+    scanf("%d",&n);
+    return n;
+}
+
+void getData(int n, int grades[], char name[][15], char surname[][15],double ave[])
+{
+    for(int i=0; i<n; i++)
+    {
+        scanf("%s%s",name[i],surname[i]);
+        int sum=0;
+        for(int j=0; j<4; j++)
+        {
+            scanf("%d",&grades[j]);
+            sum+=grades[j];
+        }
+        ave[i]=(double)sum/4;
+    }
+}
+
+void selSort(int n, double ave[], char name[][15], char surname[][15])
+{
+    int temp;
+    char name1[15], surname1[15];
+    for(int i=0; i<n-1; i++)
+    {
+        for(int j=i+1; j<n; j++)
+        {
+            if(ave[j]<ave[i])
+            {
+                temp=ave[i];
+                strcpy(name1,name[i]);
+                strcpy(surname1,surname[i]);
+                ave[i]=ave[j];
+                strcpy(name[i],name[j]);
+                strcpy(surname[i],surname[j]);
+                ave[j]=temp;
+                strcpy(name[j],name1);
+                strcpy(surname[j],surname1);
+            }
+        }
+    }
+}
+
+int main()
+{
+    int nStd, nTop;
+    int grades[4];
+    char name[600][15], surname[600][15];
+    double ave[600];
+    nStd=getNum();
+    nTop=getNum();
+    getData(nStd,grades,name, surname,ave);
+    selSort(nStd,ave,name,surname);
+
+    for(int i=0; i<nStd; i++)
+    {
+        printf("%s %s %.2lf",name[i],surname[i],ave[i]);
+        printf("\n");
+    }
+
+    return 0;
+}

@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef char stdName[25];
+
+int getIntNum()
+{
+  int n;
+    scanf("%d", &n);
+    return n;
+}
+void getData(stdName names[], double averages[], int n)
+{
+  int grade, cnt=0;
+  for(int i=0; i<n; i++){
+        scanf("%s ", names[i]);
+        cnt=0;
+        averages[i]=0;
+    do{
+        scanf("%d", &grade);
+        if(grade!=-999){
+            averages[i]+=grade;
+            cnt++;
+        }
+    }
+    while(grade!=-999);
+            averages[i]/=cnt;
+  }
+}
+void showData(stdName names[], int maxIndex, double averages[])
+{
+    printf("%s %.3lf", names[maxIndex], averages[maxIndex]);
+}
+
+int searchMax(double averages[], int n)
+{
+  int d;
+    double max=-1;
+    for(int i=0; i<n; i++){
+        if(averages[i]>max){
+            max=averages[i];
+            d=i;
+        }
+    }
+    return d;
+}
+int main()
+{
+  int numStd, maxIndex;
+  double averages[100];
+  stdName names[100];
+  numStd=getIntNum();
+  getData(names, averages, numStd);
+  maxIndex=searchMax(averages, numStd);
+  showData(names, maxIndex, averages);
+  //printf("%s %.3lf", names[maxIndex], averages[maxIndex]);
+  return 0;
+}
