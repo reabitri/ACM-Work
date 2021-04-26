@@ -1,0 +1,30 @@
+find the cosine using factorial formula
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+double findcos(double angle)
+{
+    double cos=1, sign=1, fact=1, power=1, term;
+    int i=1;
+    while(i<4)
+    {
+        sign=sign*(-1);
+        fact=fact*(2*i-1)*2*i;
+        power=power*angle*angle;
+        term=sign*power/fact;
+        cos=cos+term;
+        printf("%d %lf", i, term);
+        i++;
+    }
+    return cos;
+}
+
+int main()
+{
+    double angle;
+    scanf("%lf", &angle);
+    printf("%lf", findcos(angle));
+    return 0;
+}
