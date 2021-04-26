@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int getIntNum()
+{
+  int n;
+  scanf("%d", &n);
+  return n;
+}
+void selSort(int  arr[], int n)
+{
+  int i, j, temp;
+
+  for (i = 0; i<n - 1; i++)
+  {
+    int min = i;
+    for (j = i + 1; j < n; j++)
+    {
+      if (arr[j]<arr[min])
+        min = j;
+    }
+    temp = arr[min];
+    arr[min] = arr[i];
+    arr[i] = temp;
+
+  }
+}
+
+int calStairs(int lst[], int n)
+{
+  int i, tot=0, res;
+  if(lst[0]<=2)
+        tot+=lst[0];
+    for(i=0; i<n-1; i++)
+    {
+        res=lst[i+1]-lst[i];
+        if(res<=2)
+        {
+            tot+=res;
+        }
+    }
+    return tot;
+}
+
+int main()
+{
+  int num, cnt, numStairs, totNumStairs=0;
+  int lst[200];
+
+  while (1)
+  {
+    cnt = 0;
+    num = getIntNum();
+    if (num < 0)
+            break;
+    do
+    {
+        lst[cnt]=num;
+        cnt++;
+        num=getIntNum();
+    }
+    while (num >= 0);
+    selSort(lst, cnt);
+    numStairs=calStairs(lst, cnt);
+    totNumStairs+=numStairs;
+  }
+  printf("%d ", totNumStairs);
+
+  return 0;
+}
